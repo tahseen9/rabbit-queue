@@ -1,11 +1,10 @@
 # RabbitQueue
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+A simple and elegant <a href="https://laravel.com" target="_blank">Laravel<a/> wrapper around <a href="https://github.com/php-amqplib/php-amqplib" target="_blank">php-amqplib</a> for dispatching to and listening from <a href="https://www.rabbitmq.com/" target="_blank">rabbitmq</a> queues.
+### Avoiding High Connection Churn
+Use <a href="https://laravel.com" target="_blank">AMQProxy<a/>, which is a proxy library with connection and channel pooling/reusing. This allows for lower connection and channel churn when using php-amqplib, leading to less CPU usage of RabbitMQ. 
 
 ## Installation
 
@@ -14,31 +13,60 @@ Via Composer
 ```bash
 composer require tahseen9/rabbit-queue
 ```
+then publish the config file
+```bash
+php artisan vendor:publish --provider="Tahseen9\RabbitQueue\RabbitQueueServiceProvider"
+```
 
 ## Usage
 
-## Change log
-
-Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
+### Dispatch Queue
 
 ```bash
-composer test
+use Tahseen9\RabbitQueue\Facades\RabbitQueue;
+...
+
+RabbitQueue::dispatch(
+    [
+      'lang' => 'php',
+      'framework' => 'laravel',
+    ], # Message Array
+    $queue_name = "my_queue" # Queue Name
+ );
 ```
 
-## Contributing
+### Listen Queue
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+```bash
+use Tahseen9\RabbitQueue\Facades\RabbitQueue;
+...
+
+RabbitQueue::listen(function($message, $handler){
+    
+    echo $message->lang; # php
+    
+    echo $message->framework; # laravel
+    
+    $handler->ack(); # acknowledge message after using it, so it will be removed from the queue
+    
+    $handler->stopWhenProcessed(); # use this if you want to stop execution after listening the whole queue    
+
+}, $queue_name = "my_queue");
+```
+
+
+## Change log
+
+First Version 1.0.
 
 ## Security
 
-If you discover any security related issues, please email author@email.com instead of using the issue tracker.
+If you discover any security related issues, please email tehzu9@hotmail.com instead of using the issue tracker.
 
 ## Credits
 
-- [Author Name][link-author]
-- [All Contributors][link-contributors]
+- AMQProxy team
+- php-amqplib team
 
 ## License
 
