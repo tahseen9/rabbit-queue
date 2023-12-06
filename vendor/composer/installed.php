@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5060815450721e3c2538fc8bea526f5aef198494',
+        'reference' => '2ed0dcfaed542cde42941a8bdea7576eb34ccb77',
         'name' => 'tahseen9/rabbit-queue',
         'dev' => true,
     ),
@@ -1292,7 +1292,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5060815450721e3c2538fc8bea526f5aef198494',
+            'reference' => '2ed0dcfaed542cde42941a8bdea7576eb34ccb77',
             'dev_requirement' => false,
         ),
         'theseer/tokenizer' => array(

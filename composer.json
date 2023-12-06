@@ -1,7 +1,6 @@
 {
     "name": "tahseen9/rabbit-queue",
-    "version": "1.0",
-    "description": "Produce and Consume Rabbit MQ Queues in a simple way!",
+    "description": "A laravel package to dispatch and listen Rabbit MQ Queues in a simple way!",
     "type": "library",
     "license": "MIT",
     "authors": [
