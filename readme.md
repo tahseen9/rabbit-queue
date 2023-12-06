@@ -1,4 +1,4 @@
-# RabbitQueue
+# Rabbit Queue (Laravel Package)
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 
