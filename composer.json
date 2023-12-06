@@ -12,6 +12,7 @@
     ],
     "keywords": ["Laravel", "RabbitQueue", "Rabbit MQ implementation in laravel", "laravel rabbitmq", "laravel queues"],
     "require": {
+        "php": ">=7.2",
         "php-amqplib/php-amqplib": "^3.6"
     },
     "require-dev": {
