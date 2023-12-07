@@ -4,6 +4,7 @@ namespace Tahseen9\RabbitQueue;
 
 use Illuminate\Support\ServiceProvider;
 use Tahseen9\RabbitQueue\Contracts\T9RMQConsumerInterface;
+use Tahseen9\RabbitQueue\Contracts\T9RMQProducerInterface;
 use Tahseen9\RabbitQueue\Services\T9RmqConsumer;
 use Tahseen9\RabbitQueue\Services\T9RmqProducer;
 
@@ -36,6 +37,7 @@ class RabbitQueueServiceProvider extends ServiceProvider
             return new RabbitQueue;
         });
 
+        $this->app->bind(T9RMQProducerInterface::class, T9RmqProducer::class);
         $this->app->bind(T9RMQConsumerInterface::class, T9RmqConsumer::class);
 
     }
