@@ -7,10 +7,6 @@ use Exception;
 interface T9RMQProducerInterface
 {
 
-    public final const FALSE = false;
-    public final const TRUE = true;
-    public final const NULL = null;
-
     /**
      * @return self
      * @throws Exception
